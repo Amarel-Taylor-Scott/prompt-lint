@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-lint"
+version = "0.1.0"
+description = "Lint prompt templates: detect unfilled {slots}, unbalanced braces, injection-risky phrases, and excessive length, returning structured findings"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Amarel Taylor Scott" }]
+keywords = ["llm", "agents", "ai", "cli"]
+dependencies = []
+
+[tool.setuptools]
+py-modules = ["prompt_lint"]
