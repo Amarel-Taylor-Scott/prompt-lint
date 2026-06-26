@@ -69,18 +69,15 @@ def find_unfilled_slots(prompt: str) -> List[Issue]:
     
     for match in slot_pattern.finditer(prompt):
         slot_name = match.group(1)
-        # Check if this looks like a placeholder that needs filling
-        # Exclude common patterns that are intentionally left
-        if slot_name not in {'prompt', 'text', 'input', 'query'}:
-            line = prompt[:match.start()].count('\n') + 1
-            col = match.start() - prompt[:match.start()].rfind('\n')
-            issues.append(Issue(
-                rule=LintRule.UNFILLED.value,
-                message=f"Unfilled slot: {{{slot_name}}}",
-                line=line,
-                column=col,
-                raw=f"{{{slot_name}}}",
-            ))
+        line = prompt[:match.start()].count('\n') + 1
+        col = match.start() - prompt[:match.start()].rfind('\n')
+        issues.append(Issue(
+            rule=LintRule.UNFILLED.value,
+            message=f"Unfilled slot: {{{slot_name}}}",
+            line=line,
+            column=col,
+            raw=f"{{{slot_name}}}",
+        ))
     
     return issues
 
